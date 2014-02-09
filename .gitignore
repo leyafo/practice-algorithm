@@ -16,3 +16,6 @@
 *.exe
 *.out
 *.app
+
+# Apple filesystem files
+*.DC_Store
