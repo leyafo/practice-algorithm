@@ -18,4 +18,4 @@
 *.app
 
 # Apple filesystem files
-*.DC_Store
+.DS_Store
