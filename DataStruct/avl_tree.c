@@ -221,23 +221,6 @@ avl_tree_insert(struct avl_tree *t, void *data)
     ++t->count;
 
     _keep_balance(t, *n);
-    /*struct tree_node *iter= *n;*/
-    /*while(iter && iter->parent) {*/
-        /*parent = iter->parent;*/
-        /*_update_height(parent);*/
-        /*unsigned lh = _get_height(parent->left);*/
-        /*unsigned rh = _get_height(parent->right);*/
-        /*if(lh - rh == 2) {*/
-            /*if((*t->cmp_func)(iter->data,data) < 0)  //LR rotate*/
-                /*_tree_rotate_left(iter, t);*/
-            /*_tree_rotate_right(parent, t);*/
-        /*} else if (rh - lh == 2) {*/
-            /*if((*t->cmp_func)(iter->data,data) > 0)  //RL rotate*/
-                /*_tree_rotate_right(iter, t);*/
-            /*_tree_rotate_left(parent, t);*/
-        /*}*/
-        /*iter = iter->parent;*/
-    /*}*/
 }
 
 void * 

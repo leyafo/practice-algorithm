@@ -4,6 +4,7 @@
 #include "stack.h"
 #include "binary_tree.h"
 #include "avl_tree.h"
+#include "rb_tree.h"
 
 #define NEED_FREE(data)\
     do{\
@@ -127,12 +128,49 @@ binary_tree_test(void)
        printf("success release all binary tree nodes\n");
 }
 
+
+void 
+rb_tree_test(void)
+{
+    printf("test red black tree\n");
+    const int node_count = 15;
+    struct rb_tree *t = rb_tree_init(&cmp_int);
+    for(int i = 0; i != node_count; i++) {
+        int *val = malloc(sizeof(int));
+        *val = i;
+        rb_tree_insert(t, val);
+    }
+    rb_tree_ascend_iterate(t, &print_int);
+    printf("test for redblack tree remove\n");
+
+    int a = 9;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 1;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 2;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 3;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 4;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 5;
+    NEED_FREE(rb_tree_remove(t, &a));
+    a = 6;
+    NEED_FREE(rb_tree_remove(t, &a));
+
+    rb_tree_descend_iterate(t, &print_int);
+    rb_tree_release(&t);
+    if(rb_tree_empty(t))
+       printf("success release all red black tree nodes\n");
+}
+
 int 
 main(int argc, char* argv[])
 {
     //stack_test();
-    binary_tree_test();
-    avl_tree_test();
+    //binary_tree_test();
+    //avl_tree_test();
+    rb_tree_test();
 
     return 0;
 }
